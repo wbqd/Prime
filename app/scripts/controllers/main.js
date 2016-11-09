@@ -8,10 +8,10 @@
  * Controller of the primeApp
  */
 angular.module('primeApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $mdSidenav, sideNavMenu) {
+    $scope.menu = sideNavMenu;
+
+    $scope.toggleSidenav = function (menuId) {
+      $mdSidenav(menuId).toggle();
+    };
   });
