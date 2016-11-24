@@ -1,86 +1,88 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Prime</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-    <style type="text/css">
-      /**
-       * Hide when Angular is not yet loaded and initialized
-       */
-      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-        display: none !important;
-      }
-    </style>
-  </head>
-  <body ng-app="primeApp" ng-controller="MainCtrl" layout="column" ng-cloak>
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Prime</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+  <style type="text/css">
+    /**
+     * Hide when Angular is not yet loaded and initialized
+     */
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
+</head>
+<body ng-app="primeApp" ng-controller="MainCtrl" layout="column" ng-cloak>
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
 
-    <!-- Add your site or application content here -->
-    <md-toolbar md-whiteframe="4">
-      <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" ng-click="toggleSidenav('left')" hide-gt-sm>
-          <md-icon>menu</md-icon>
-        </md-button>
-        <a layout-align-gt-sm="center center" class="md-toolbar-tools" ng-href="#"><span class="md-headline">프라임 사업단</span></a>
-      </div>
-    </md-toolbar>
+<!-- Add your site or application content here -->
+<md-toolbar md-whiteframe="4">
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" ng-click="toggleSidenav('left')" hide-gt-sm>
+      <md-icon>menu</md-icon>
+    </md-button>
+    <a layout-align-gt-sm="center center" class="md-toolbar-tools" ng-href="#"><span class="md-headline">프라임 사업단</span></a>
+  </div>
+</md-toolbar>
 
-    <div layout="row" flex class="content-wrapper" id="main">
-      <md-sidenav flex="nogrow" md-whiteframe="4" layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-        <md-list flex layout-align="start center">
-          <md-list-item class="md-1-line" ng-repeat="item in menu" role="link" md-ink-ripple ng-href="{{item.url}}">
-            <md-icon>{{item.icon}}</md-icon>
-            <div class="md-list-item-text">
-              <span class="md-body-2">{{item.title}}</span>
-            </div>
-            <span flex></span>
-          </md-list-item>
-          <md-divider></md-divider>
-          <md-list-item class="md-1-line" ng-href="http://hisnet.handong.edu" target="_blank">
-            <md-icon>map</md-icon>
-            <div class="md-list-item-text">
-              <span class="md-body-2">HISNet</span>
-            </div>
-            <span flex></span>
-          </md-list-item>
-        </md-list>
-      </md-sidenav>
-      <ng-view flex id="primary-col"></ng-view>
-    </div>
+<div layout="row" flex class="content-wrapper" id="main">
+  <md-sidenav flex="nogrow" md-whiteframe="4" layout="column" class="md-sidenav-left" md-component-id="left"
+              md-is-locked-open="$mdMedia('gt-sm')">
+    <md-list flex layout-align="start center">
+      <md-list-item class="md-1-line" ng-repeat="item in menu" role="link" md-ink-ripple ng-href="{{item.url}}">
+        <md-icon>{{item.icon}}</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">{{item.title}}</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item class="md-1-line" ng-href="http://hisnet.handong.edu" target="_blank">
+        <md-icon>map</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">HISNet</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+    </md-list>
+  </md-sidenav>
+  <ng-view flex id="primary-col"></ng-view>
+</div>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-material/angular-material.js"></script>
-    <script src="bower_components/material-calendar/dist/angular-material-calendar.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/material-calendar/dist/angular-material-calendar.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/services/sidenavmenu.js"></script>
-        <!-- endbuild -->
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<script src="scripts/services/sidenavmenu.js"></script>
+<!-- endbuild -->
 </body>
 </html>
