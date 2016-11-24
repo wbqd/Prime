@@ -10,23 +10,18 @@
 angular.module('primeApp')
   .constant('sideNavMenu', [
     {
-      url  : '#dashboard',
-      title : 'Dashboard',
-      icon  : 'dashboard'
+      url  : '#home',
+      title : 'Home',
+      icon  : 'home'
     },
     {
-      url  : '#reports',
-      title : 'Reports',
-      icon  : 'insert_chart'
+      url  : '#schedule',
+      title : 'Schedule',
+      icon  : 'date_range'
     },
     {
-      url  : '#campaigns',
-      title : 'Marketing Campaigns',
-      icon  : 'monetization_on'
-    },
-    {
-      url  : '#groups',
-      title : 'Customer Groups',
-      icon  : 'group_work'
+      url  : '#notice',
+      title : 'Notice',
+      icon  : 'announcement'
     }
   ]);
