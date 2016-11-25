@@ -35,24 +35,63 @@
     <md-button class="md-icon-button" ng-click="toggleSidenav('left')" hide-gt-sm>
       <md-icon>menu</md-icon>
     </md-button>
-    <a layout-align-gt-sm="center center" class="md-toolbar-tools" ng-href="#"><span class="md-headline">프라임 사업단</span></a>
+    <a layout-align-gt-sm="center center" class="md-toolbar-tools" ng-href="#"><span class="md-headline">한동대학교 프라임 사업단 홈페이지</span></a>
   </div>
 </md-toolbar>
 
 <div layout="row" flex class="content-wrapper" id="main">
   <md-sidenav flex="nogrow" md-whiteframe="4" layout="column" class="md-sidenav-left" md-component-id="left"
               md-is-locked-open="$mdMedia('gt-sm')">
-    <md-list flex layout-align="start center">
-      <md-list-item class="md-1-line" ng-repeat="item in menu" role="link" md-ink-ripple ng-href="{{item.url}}">
-        <md-icon>{{item.icon}}</md-icon>
+    <md-list flex>
+      <md-subheader class="md-no-sticky">사업단 소개</md-subheader>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="#welcome">
+        <md-icon>home</md-icon>
         <div class="md-list-item-text">
-          <span class="md-body-2">{{item.title}}</span>
+          <span class="md-body-2">인사말</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="#timeline">
+        <md-icon>timeline</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">연혁</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="people">
+        <md-icon>people</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">조직도</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="map">
+        <md-icon>directions</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">오시는 길</span>
         </div>
         <span flex></span>
       </md-list-item>
       <md-divider></md-divider>
+      <md-subheader class="md-no-sticky">커뮤니티</md-subheader>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="#schedule">
+        <md-icon>date_range</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">일정</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="#notice">
+        <md-icon>announcement</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">공지사항</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-subheader class="md-no-sticky">관련 사이트</md-subheader>
       <md-list-item class="md-1-line" ng-href="http://hisnet.handong.edu" target="_blank">
-        <md-icon>map</md-icon>
+        <md-icon>link</md-icon>
         <div class="md-list-item-text">
           <span class="md-body-2">HISNet</span>
         </div>
