@@ -1,23 +1,83 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<md-content layout-margin>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+  <div layout-xs="column" layout="row" layout-align="center" layout-align-xs="">
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+    <div flex-xs="100" flex-gt-xs="50" flex-gt-md="40" layout="column">
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-subhead">{{'Welcome!' | uppercase}}</span>
+            <span class="md-headline">{{fullName}}</span>
+            <md-divider></md-divider>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row">
+          <div>
+            <ul>
+              <li ng-repeat="message in messages">
+                <!-- edit a message -->
+                <input ng-model="message.text" ng-change="messages.$save(message)" />
+                <!-- delete a message -->
+                <button ng-click="messages.$remove(message)">Delete Message</button>
+              </li>
+            </ul>
+            <!-- push a new message onto the array -->
+            <form ng-submit="addMessage()">
+              <input ng-model="newMessageText" />
+              <button type="submit">Add Message</button>
+            </form>
+          </div>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Setting</md-button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card>
+        <md-card-header md-colors="::{backgroundColor: '{{menu[2].theme}}-700'}">
+          <md-card-avatar>
+            <md-icon>{{menu[2].icon}}</md-icon>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-headline">{{menu[2].title | uppercase}}</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content md-colors="{color: '{{menu[2].theme}}-700'}">
+          <md-list flex>
+            <md-list-item class="md-2-line" ng-repeat="item in campaigns">
+              <div class="md-list-item-text">
+                <h3>{{item.title}}</h3>
+                <p>${{item.sales | number}}</p>
+              </div>
+              <md-divider ng-if="!$last"></md-divider>
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center" md-colors="{color: '{{menu[2].theme}}-700'}">
+          <md-button ng-href="#campaigns">more</md-button>
+        </md-card-actions>
+      </md-card>
+
+    </div>
+    <div flex-xs="100" flex-gt-xs="50" flex-gt-md="40" layout="column">
+
+      <md-card>
+        <md-card-header md-colors="::{backgroundColor: '{{menu[1].theme}}-700'}">
+          <md-card-avatar>
+            <md-icon>{{menu[1].icon}}</md-icon>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-headline">{{menu[1].title | uppercase}}</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content layout="column" layout-align="center none"
+                         md-colors="{color: '{{menu[1].theme}}-700'}"></md-card-content>
+        <md-card-actions layout="row" layout-align="end center" md-colors="{color: '{{menu[1].theme}}-700'}">
+          <md-button ng-href="#reports">more</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+
+  </div>
+</md-content>
