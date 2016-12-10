@@ -21,6 +21,15 @@ angular
     'firebase',
     'ui.tinymce'
   ])
+  .run(function ($rootScope, $location) {
+    $rootScope.$on('$routeChangeError', function (event, next, previous, error) {
+      // We can catch the error thrown when the $requireSignIn promise is rejected
+      // and redirect the user back to the home page
+      if (error === 'AUTH_REQUIRED') {
+        $location.path('/');
+      }
+    });
+  })
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -62,6 +71,20 @@ angular
         templateUrl: 'views/notice.html',
         controller: 'NoticeCtrl',
         controllerAs: 'notice'
+      })
+      .when('/editpage', {
+        templateUrl: 'views/editpage.html',
+        controller: 'EditpageCtrl',
+        controllerAs: 'editPage',
+        resolve: {
+          // controller will not be loaded until $requireSignIn resolves
+          // Auth refers to our $firebaseAuth wrapper in the factory below
+          'currentAuth': ['Auth', function(Auth) {
+            // $requireSignIn returns a promise so the resolve waits for it to complete
+            // If the promise is rejected, it will throw a $stateChangeError (see above)
+            return Auth.$requireSignIn();
+          }]
+        }
       })
       .otherwise({
         redirectTo: '/'
