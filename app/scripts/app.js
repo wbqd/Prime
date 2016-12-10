@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngMaterial',
-    'firebase'
+    'firebase',
+    'ui.tinymce'
   ])
   .config(function ($routeProvider) {
     $routeProvider
