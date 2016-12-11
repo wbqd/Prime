@@ -93,7 +93,7 @@ angular
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('teal')
-      .accentPalette('light-blue')
+      .accentPalette('blue')
       .warnPalette('red')
       .backgroundPalette('grey');
   });
