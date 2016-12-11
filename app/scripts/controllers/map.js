@@ -8,10 +8,12 @@
  * Controller of the primeApp
  */
 angular.module('primeApp')
-  .controller('MapCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MapCtrl', function ($scope, Pages, Auth) {
+    $scope.page = Pages.map;
+
+    $scope.auth = Auth;
+    $scope.currentUser = null;
+    $scope.auth.$onAuthStateChanged(function(user) {
+      $scope.currentUser = user;
+    });
   });

@@ -19,7 +19,8 @@ angular
     'ngSanitize',
     'ngMaterial',
     'firebase',
-    'ui.tinymce'
+    'ui.tinymce',
+    'ngMap'
   ])
   .run(function ($rootScope, $location) {
     $rootScope.$on('$routeChangeError', function (event, next, previous, error) {
