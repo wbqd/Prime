@@ -8,10 +8,6 @@
  * Controller of the primeApp
  */
 angular.module('primeApp')
-  .controller('TimelineCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('TimelineCtrl', function ($scope, Pages) {
+    $scope.page = Pages.timeline;
   });
