@@ -9,10 +9,10 @@
  */
 angular.module('primeApp')
   .controller('IndexCtrl', function ($scope, $mdSidenav, sideNavMenu) {
-  $scope.menu = sideNavMenu;
+    $scope.menu = sideNavMenu;
 
-  $scope.toggleSidenav = function (menuId) {
-    $mdSidenav(menuId).toggle();
-  };
+    $scope.toggleSidenav = function (menuId) {
+      $mdSidenav(menuId).toggle();
+    };
 
-});
+  });

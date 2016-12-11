@@ -13,24 +13,10 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content layout="row">
-          <div>
-            <ul>
-              <li ng-repeat="message in messages">
-                <!-- edit a message -->
-                <input ng-model="message.text" ng-change="messages.$save(message)" />
-                <!-- delete a message -->
-                <button ng-click="messages.$remove(message)">Delete Message</button>
-              </li>
-            </ul>
-            <!-- push a new message onto the array -->
-            <form ng-submit="addMessage()">
-              <input ng-model="newMessageText" />
-              <button type="submit">Add Message</button>
-            </form>
-          </div>
+
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button>Setting</md-button>
+          <md-button ng-click="signIn()">SignIn</md-button>
         </md-card-actions>
       </md-card>
 
