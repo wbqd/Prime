@@ -89,4 +89,11 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(function ($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('teal')
+      .accentPalette('light-blue')
+      .warnPalette('red')
+      .backgroundPalette('grey');
   });
