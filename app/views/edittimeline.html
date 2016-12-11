@@ -1,6 +1,6 @@
-<md-content id="primary-col" layout="row" layout-align="center start">
-  <div layout="column" flex="100" flex-gt-md="70">
-    <md-card flex="100">
+<md-content layout="row" layout-align="center start">
+  <div layout="column" flex-gt-md="70">
+    <md-card>
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline">연혁</span>
@@ -8,17 +8,16 @@
         </md-card-title-text>
       </md-card-title>
       <md-card-content>
-        <md-divider></md-divider>
-        <p ng-bind-html="page.body"></p>
+        <textarea id="tiny-editor" ui-tinymce="tinymceOptions" ng-model="tinymceModel.body"></textarea>
       </md-card-content>
     </md-card>
   </div>
 </md-content>
 <md-fab-speed-dial class="md-fab-bottom-right">
   <md-fab-trigger>
-    <md-button aria-label="add" class="md-fab md-accent" ng-href="#timeline/edit">
-      <md-tooltip md-direction="top">Edit Page</md-tooltip>
-      <md-icon>mode_edit</md-icon>
+    <md-button aria-label="add" class="md-fab md-accent" ng-click="save()">
+      <md-tooltip md-direction="top">저장</md-tooltip>
+      <md-icon>save</md-icon>
     </md-button>
   </md-fab-trigger>
 </md-fab-speed-dial>
