@@ -8,13 +8,10 @@
  * Controller of the primeApp
  */
 angular.module('primeApp')
-  .controller('EditpageCtrl', function ($scope, $mdToast, $document, $location, Pages) {
+  .controller('EditpageCtrl', function ($scope, $mdToast, $document, $location, Pages, editorOption) {
     $scope.tinymceModel = Pages.welcome;
 
-    $scope.tinymceOptions = {
-      plugins: 'link image code',
-      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
-    };
+    $scope.tinymceOptions = editorOption;
 
     $scope.save = function () {
       $scope.tinymceModel.$save().then(function() {
@@ -24,7 +21,10 @@ angular.module('primeApp')
           .parent($document[0].querySelector('#main')));
         $location.path('/welcome');
       }).catch(function (error) {
-        alert('Error!');
+        $mdToast.show($mdToast.simple()
+          .textContent('Error: ' + error)
+          .hideDelay(3000)
+          .parent($document[0].querySelector('#main')));
       });
     }
   });
