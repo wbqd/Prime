@@ -1,0 +1,23 @@
+<md-content id="primary-col" layout="row" layout-align="center start">
+  <div layout="column" flex="100" flex-gt-md="70">
+    <md-card flex="100">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">인삿말</span>
+          <span class="md-subhead">한동대학교 프라임 사업단</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <textarea ui-tinymce="tinymceOptions" ng-model="tinymceModel.body"></textarea>
+      </md-card-content>
+    </md-card>
+  </div>
+</md-content>
+<md-fab-speed-dial class="md-fab-bottom-right">
+  <md-fab-trigger>
+    <md-button aria-label="add" class="md-fab md-accent" ng-click="save()">
+      <md-tooltip md-direction="top">Save</md-tooltip>
+      <md-icon>save</md-icon>
+    </md-button>
+  </md-fab-trigger>
+</md-fab-speed-dial>
