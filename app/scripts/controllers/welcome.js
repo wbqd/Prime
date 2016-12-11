@@ -8,10 +8,6 @@
  * Controller of the primeApp
  */
 angular.module('primeApp')
-  .controller('WelcomeCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('WelcomeCtrl', function ($scope, Pages) {
+    $scope.page = Pages.welcome;
   });
