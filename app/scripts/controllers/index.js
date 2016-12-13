@@ -8,7 +8,7 @@
  * Controller of the primeApp
  */
 angular.module('primeApp')
-  .controller('IndexCtrl', function ($scope, $mdSidenav, $mdDialog, Auth) {
+  .controller('IndexCtrl', function ($scope, $mdSidenav, $mdDialog, $mdToast, $document, Auth) {
     var originatorEv;
 
     $scope.auth = Auth;
@@ -34,10 +34,23 @@ angular.module('primeApp')
 
     $scope.signIn = function (email, passwd) {
       $scope.auth.$signInWithEmailAndPassword(email, passwd).then(function (user) {
-        console.log("Signed in as: ", user.uid);
+        // console.log("Signed in as: ", user.email);
+        $mdToast.show($mdToast.simple()
+          .textContent(user.email + ' 계정으로 로그인되었습니다.')
+          .hideDelay(3000)
+          .parent($document[0].querySelector('#main')));
       }).catch(function (error) {
         console.error("Authentication failed: ", error);
       });
+    };
+
+    $scope.signOut = function () {
+      $scope.auth.$signOut().then(function () {
+        $mdToast.show($mdToast.simple()
+          .textContent('로그아웃되었습니다.')
+          .hideDelay(3000)
+          .parent($document[0].querySelector('#main')));
+      })
     };
 
     $scope.showLoginPrompt = function(ev) {
