@@ -1,0 +1,23 @@
+<md-content layout="row" layout-align="center start" flex="100">
+  <div layout="column" flex="100" flex-gt-md="70">
+    <md-card flex="100">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">공지사항</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <md-divider></md-divider>
+        <p>아직 공지가 없습니다.</p>
+      </md-card-content>
+    </md-card>
+  </div>
+</md-content>
+<md-fab-speed-dial ng-if="currentUser" class="md-fab-bottom-right">
+  <md-fab-trigger>
+    <md-button aria-label="add" class="md-fab md-accent" ng-href="#notice/new">
+      <md-tooltip md-direction="top">새글 쓰기</md-tooltip>
+      <md-icon>add</md-icon>
+    </md-button>
+  </md-fab-trigger>
+</md-fab-speed-dial>
