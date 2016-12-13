@@ -1,86 +1,187 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="primeApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Prime</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+  <style type="text/css">
+    /**
+     * Hide when Angular is not yet loaded and initialized
+     */
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
+</head>
+<body ng-app="primeApp" ng-controller="IndexCtrl" layout="column" ng-cloak>
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+<!-- Add your site or application content here -->
+<md-toolbar md-whiteframe="4">
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" ng-click="toggleSidenav('left')" hide-gt-sm>
+      <md-icon>menu</md-icon>
+    </md-button>
+    <a layout-align-gt-sm="center center" class="md-toolbar-tools" ng-href="#/"><span class="md-headline">한동대학교 프라임 사업단</span></a>
+    <md-menu>
+      <md-button class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+        <md-icon md-menu-origin>more_vert</md-icon>
+      </md-button>
+      <md-menu-content width="2">
+        <md-menu-item ng-if="!currentUser">
+          <md-button ng-click="showLoginPrompt($event)">
+            <md-icon md-menu-align-target>account_circle</md-icon>
+            Sign In
+          </md-button>
+        </md-menu-item>
+        <md-menu-item ng-if="currentUser">
+          <md-button ng-click="auth.$signOut()">
+            <md-icon md-menu-align-target>exit_to_app</md-icon>
+            Sign Out
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+  </div>
+</md-toolbar>
 
-            <a class="navbar-brand" href="#/">prime</a>
-          </div>
-
-          <div class="collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
+<div layout="row" flex class="content-wrapper" id="main">
+  <md-sidenav flex="nogrow" md-whiteframe="4" layout="column" class="md-sidenav-left" md-component-id="left"
+              md-is-locked-open="$mdMedia('gt-sm')">
+    <md-list flex>
+      <md-subheader class="md-no-sticky">사업단 소개</md-subheader>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="#welcome">
+        <md-icon>home</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">인사말</span>
         </div>
-      </div>
-    </div>
+        <span flex></span>
+      </md-list-item>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="#timeline">
+        <md-icon>timeline</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">연혁</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="#people">
+        <md-icon>people</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">조직도</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="#map">
+        <md-icon>directions</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">오시는 길</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-subheader class="md-no-sticky">커뮤니티</md-subheader>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="#schedule">
+        <md-icon>event</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">일정</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-list-item class="md-1-line" role="link" md-ink-ripple ng-href="#notice">
+        <md-icon>announcement</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">공지사항</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-subheader class="md-no-sticky">관련 사이트</md-subheader>
+      <md-list-item class="md-1-line" ng-href="http://hisnet.handong.edu" target="_blank">
+        <md-icon>link</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">HISNet</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+      <md-list-item class="md-1-line" ng-href="http://handong.edu" target="_blank">
+        <md-icon>link</md-icon>
+        <div class="md-list-item-text">
+          <span class="md-body-2">한동대학교</span>
+        </div>
+        <span flex></span>
+      </md-list-item>
+    </md-list>
+  </md-sidenav>
+  <ng-view flex id="primary-col"></ng-view>
+</div>
 
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/material-calendar/dist/angular-material-calendar.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
+<script src="bower_components/angularfire/dist/angularfire.js"></script>
+<script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
+<script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
 
+<script src="https://maps.google.com/maps/api/js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDhyxaWdU0qchj9SsFJ_IYF0l5zBNUNpGM",
+    authDomain: "prime-426ec.firebaseapp.com",
+    databaseURL: "https://prime-426ec.firebaseio.com",
+    storageBucket: "prime-426ec.appspot.com",
+    messagingSenderId: "84680483548"
+  };
+  firebase.initializeApp(config);
+</script>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
-
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-material/angular-material.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<script src="scripts/services/sidenavmenu.js"></script>
+<script src="scripts/controllers/welcome.js"></script>
+<script src="scripts/controllers/timeline.js"></script>
+<script src="scripts/controllers/people.js"></script>
+<script src="scripts/controllers/map.js"></script>
+<script src="scripts/controllers/schedule.js"></script>
+<script src="scripts/controllers/notice.js"></script>
+<script src="scripts/controllers/index.js"></script>
+<script src="scripts/services/auth.js"></script>
+<script src="scripts/controllers/editpage.js"></script>
+<script src="scripts/services/pages.js"></script>
+<script src="scripts/services/editoroption.js"></script>
+<script src="scripts/controllers/edittimeline.js"></script>
+<script src="scripts/controllers/editpeople.js"></script>
+<script src="scripts/controllers/editmap.js"></script>
+<!-- endbuild -->
 </body>
 </html>
